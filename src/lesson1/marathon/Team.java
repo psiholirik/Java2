@@ -4,14 +4,9 @@ public class Team {
   private String teamName;
   private Competitor[] competitors;
 
-  public Team(String teamName) {
+  public Team(String teamName, Competitor... competitors) {
     this.teamName = teamName;
-    this.competitors = new Competitor[]{
-            new Dog("Jack", "black", 10, 1, 2),
-            new Cat("Mag", "white", 10, 0, 3),
-            new Turtle("Turtle", "green", 100, 10, 0),
-            new Human("Rick", 8, 10, 2)
-    };
+    this.competitors = competitors;
   }
 
   public void teamMembersInfo() {
