@@ -55,4 +55,15 @@ public class Human implements Competitor {
     public void info() {
         System.out.println(name + (onDistance ? " прошел" : " не прошел" ));
     }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "name='" + name + '\'' +
+                ", maxRunDistance=" + maxRunDistance +
+                ", maxSwimDistance=" + maxSwimDistance +
+                ", maxJumpHeight=" + maxJumpHeight +
+                ", onDistance=" + onDistance +
+                '}';
+    }
 }

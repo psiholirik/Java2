@@ -19,6 +19,18 @@ public class Animal implements Competitor {
     }
 
     @Override
+    public String toString() {
+        return "Animal{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", maxRunDistance=" + maxRunDistance +
+                ", maxSwimDistance=" + maxSwimDistance +
+                ", maxJumpHeight=" + maxJumpHeight +
+                ", onDistance=" + onDistance +
+                '}';
+    }
+
+    @Override
     public void run(int dist) {
         if (dist <= maxRunDistance){
             System.out.println(name + " цвета " + color + " пробегает " + dist + "km");
