@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="386.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lesson4.Main">
+   <children>
+      <Button id="sendButton" fx:id="sendButton" alignment="CENTER" contentDisplay="CENTER" layoutX="480.0" layoutY="339.0" mnemonicParsing="false" onMouseClicked="#sendToChatByButton" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: #708090#708090;" text="Отправить" textAlignment="CENTER" textFill="WHITE" />
+      <TextArea id="textField" fx:id="message" layoutX="31.0" layoutY="332.0" onKeyPressed="#sendToChatByEnter" prefHeight="42.0" prefWidth="432.0" promptText="Введи текст" wrapText="true" />
+      <TextArea fx:id="chat" editable="false" layoutX="31.0" layoutY="14.0" prefHeight="302.0" prefWidth="539.0" wrapText="true" />
+   </children>
+</AnchorPane>
