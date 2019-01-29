@@ -22,6 +22,7 @@ public class Main extends Application {
 
     primaryStage.setTitle("Чат");
     primaryStage.setScene(new Scene(parent));
+    //primaryStage.setResizable(false);//блокирует изменение экрана
     primaryStage.show();
   }
   public static void main(String[] args) {
