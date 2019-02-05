@@ -9,6 +9,7 @@ public class ClientHandler {
   private Server server;
   private Socket socket;
   private BufferedReader in;
+  private BufferedReader reader;
   private BufferedWriter out;
 
   public ClientHandler(Server server, Socket socket) {
@@ -23,10 +24,8 @@ public class ClientHandler {
       new Thread(() -> {
         try {
           while (true) {
-            String line = in.readLine();
-            System.out.println("from client:" + line);
+            String line = reader.readLine();
             out.write(line);
-            out.flush();
           }
         } catch (IOException e) {
           e.printStackTrace();

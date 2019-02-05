@@ -2,7 +2,6 @@ package lesson6.homework.client;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Client {
   private final String HOST = "localhost";
@@ -11,20 +10,22 @@ public class Client {
   private Socket socket;
   private BufferedReader in;
   private BufferedWriter out;
+  private BufferedReader reader;
+
 
   Client() {
     try {
       socket = new Socket(HOST, PORT);
       in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+      reader = new BufferedReader(new InputStreamReader(System.in));
 
       new Thread(() -> {
         try {
           while (true){
-            String message = in.readLine();
-            System.out.println("from server:" + message);
-            //out.write(message);
-            //out.flush();
+            String message = reader.readLine();
+            //System.out.println("from server:" + message);
+            out.write("client send: " + message);
           }
         } catch (IOException e) {
           e.printStackTrace();
