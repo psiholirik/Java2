@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class ClientHandler {
 
@@ -25,10 +26,9 @@ public class ClientHandler {
       new Thread(() -> {
         try {
           while (true) {
-            String line;
-            line = in.readUTF();
+            String line = in.readUTF();
             System.out.println("from client:" + line);
-            server.broadCast(line);
+            sendMessage();
           }
         } catch (IOException e) {
           e.printStackTrace();
@@ -40,11 +40,9 @@ public class ClientHandler {
     }
   }
 
-  public void sendMsg(String msg) {
-    try {
-      out.writeUTF(msg);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+  public void sendMessage() throws IOException {
+    Scanner scanner = new Scanner(System.in);
+    String str = scanner.nextLine();
+    out.writeUTF(str);
   }
 }

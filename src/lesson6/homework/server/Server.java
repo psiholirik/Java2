@@ -44,10 +44,4 @@ public class Server {
       }
     }
   }
-
-  public void broadCast(String msg){
-    for (ClientHandler handler: clients){
-      handler.sendMsg(msg);
-    }
-  }
 }

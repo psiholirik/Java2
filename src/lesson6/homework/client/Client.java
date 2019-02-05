@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class Client {
   private final String HOST = "localhost";
@@ -24,6 +25,7 @@ public class Client {
           while (true){
             String message = in.readUTF();
             System.out.println("from server:" + message);
+            sendMessage();
           }
         } catch (IOException e) {
           e.printStackTrace();
@@ -40,5 +42,10 @@ public class Client {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+  public void sendMessage() throws IOException {
+    Scanner scanner = new Scanner(System.in);
+    String str = scanner.nextLine();
+    out.writeUTF(str);
   }
 }
