@@ -24,8 +24,9 @@ public class Client {
         try {
           while (true){
             String message = reader.readLine();
-            //System.out.println("from server:" + message);
-            out.write("client send: " + message);
+            out.write("client send: " + message + "\n");
+            String serverResponse = in.readLine();
+            System.out.println(serverResponse);
           }
         } catch (IOException e) {
           e.printStackTrace();

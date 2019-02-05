@@ -26,6 +26,8 @@ public class ClientHandler {
           while (true) {
             String line = reader.readLine();
             out.write(line);
+            String clientResponse = in.readLine();
+            System.out.println(clientResponse);
           }
         } catch (IOException e) {
           e.printStackTrace();
