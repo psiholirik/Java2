@@ -1,8 +1,6 @@
 package lesson6.homework.server;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -10,8 +8,8 @@ public class ClientHandler {
 
   private Server server;
   private Socket socket;
-  private DataInputStream in;
-  private DataOutputStream out;
+  private BufferedReader in;
+  private BufferedWriter out;
 
   public ClientHandler(Server server, Socket socket) {
     this.server = server;
@@ -20,15 +18,15 @@ public class ClientHandler {
     this.in = null;
     this.out = null;
     try {
-      in = new DataInputStream(socket.getInputStream());
-      out = new DataOutputStream(socket.getOutputStream());
-
+      in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+      out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
       new Thread(() -> {
         try {
           while (true) {
-            String line = in.readUTF();
+            String line = in.readLine();
             System.out.println("from client:" + line);
-            sendMessage();
+            out.write(line);
+            out.flush();
           }
         } catch (IOException e) {
           e.printStackTrace();
@@ -38,11 +36,5 @@ public class ClientHandler {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }
-
-  public void sendMessage() throws IOException {
-    Scanner scanner = new Scanner(System.in);
-    String str = scanner.nextLine();
-    out.writeUTF(str);
   }
 }

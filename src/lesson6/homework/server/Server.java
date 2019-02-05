@@ -3,13 +3,8 @@ package lesson6.homework.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Server {
-
-  private List<ClientHandler> clients = Collections.synchronizedList(new ArrayList<>());
 
   public Server(){
     ServerSocket server = null;
@@ -22,7 +17,7 @@ public class Server {
       while (true) {
         socket = server.accept();
         System.out.println("client connected");
-        clients.add(new ClientHandler(this, socket));
+        new ClientHandler(this, socket);
       }
 
     } catch (IOException e) {
