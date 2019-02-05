@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class Controller {
+public class Client {
   private final String HOST = "localhost";
   private final int PORT = 8080;
 
@@ -13,7 +13,7 @@ public class Controller {
   private DataInputStream in;
   private DataOutputStream out;
 
-  Controller() {
+  Client() {
     try {
       socket = new Socket(HOST, PORT);
       in = new DataInputStream(socket.getInputStream());
